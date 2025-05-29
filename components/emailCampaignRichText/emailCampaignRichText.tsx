@@ -1,5 +1,5 @@
 "use client";
-import { $getRoot, $getSelection } from "lexical";
+import { $getRoot, $getSelection, EditorState } from "lexical";
 import { useEffect, useState } from "react";
 
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
@@ -10,7 +10,7 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-function MyOnChangePlugin({ onChange }) {
+function MyOnChangePlugin({ onChange }: { onChange: (editorState: EditorState) => void }) {
   const [editor] = useLexicalComposerContext();
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
@@ -25,7 +25,7 @@ export const EmailCampaignRichText = () => {
   const theme = {};
 
   const [editorState, setEditorState] = useState<string>("");
-  const onChange = (editorState) => {
+  const onChange = (editorState: EditorState) => {
     const editorStateJSON = editorState.toJSON();
     const temp = JSON.stringify(editorStateJSON);
     console.log(temp);
