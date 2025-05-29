@@ -1,6 +1,6 @@
 "use client";
 
-import { EmailCampaignRichText } from "@/components/emailCampaignRichText/EmailCampaignRichTextt";
+import { EmailCampaignRichText } from "@/components/emailCampaignRichText/emailCampaignRichText";
 import { useGetBasePath } from "../hooks/useGetBasePath";
 
 export default function Home() {
