@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { useEmailCampaignFormManager } from "@/hooks/useEmailCampaignFormMananger";
 import { EmailCampaignRichText } from "../emailCampaignRichText/EmailCampaignRichText";
-import { LexicalEditor } from "lexical";
+
+const mockContent = `{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Hello world","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"    tab. tab.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Bye bye","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}`;
 
 export const EmailCampaignForm = () => {
   const { handleSubmit, onSubmit, register, emailCampaignRichTextRef } =
@@ -33,7 +34,10 @@ export const EmailCampaignForm = () => {
           </div>
         </div>
         <div></div>
-        <EmailCampaignRichText ref={emailCampaignRichTextRef} />
+        <EmailCampaignRichText
+          editorState={mockContent}
+          ref={emailCampaignRichTextRef}
+        />
         <button>submit</button>
       </div>
     </form>
