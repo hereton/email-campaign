@@ -10,7 +10,11 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 
-function MyOnChangePlugin({ onChange }: { onChange: (editorState: EditorState) => void }) {
+function MyOnChangePlugin({
+  onChange,
+}: {
+  onChange: (editorState: EditorState) => void;
+}) {
   const [editor] = useLexicalComposerContext();
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
@@ -21,7 +25,7 @@ function MyOnChangePlugin({ onChange }: { onChange: (editorState: EditorState) =
 }
 
 export const EmailCampaignRichText = () => {
-  const PLACEHOLDER = "Enter some text...";
+  const PLACEHOLDER = "Example of using lexical as richtext";
   const theme = {};
 
   const [editorState, setEditorState] = useState<string>("");
@@ -42,19 +46,25 @@ export const EmailCampaignRichText = () => {
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <RichTextPlugin
-        contentEditable={
-          <ContentEditable
-            className="bg-white rounded-[8px] text-black h-[300px] px-[16px] pt-[8px] w-[400px]"
-            aria-placeholder={PLACEHOLDER}
-            placeholder={<div>{PLACEHOLDER}</div>}
-          />
-        }
-        ErrorBoundary={LexicalErrorBoundary}
-      />
-      <HistoryPlugin />
-      <AutoFocusPlugin />
-      <MyOnChangePlugin onChange={onChange} />
+      <div className="relative">
+        <RichTextPlugin
+          contentEditable={
+            <ContentEditable
+              className="bg-white rounded-[8px] text-black min-h-[300px] h-auto px-[16px] pt-[8px] w-full "
+              aria-placeholder={PLACEHOLDER}
+              placeholder={
+                <div className="absolute top-[10px] text-black left-[15px]">
+                  {PLACEHOLDER}
+                </div>
+              }
+            />
+          }
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+        <HistoryPlugin />
+        <AutoFocusPlugin />
+        <MyOnChangePlugin onChange={onChange} />
+      </div>
     </LexicalComposer>
   );
 };
