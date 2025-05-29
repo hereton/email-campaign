@@ -1,7 +1,7 @@
 "use client";
 
-import { EmailCampaignRichText } from "@/components/emailCampaignRichText/EmailCampaignRichText";
 import { useGetBasePath } from "../hooks/useGetBasePath";
+import { EmailCampaignForm } from "@/components/emailCampaignForm/EmailCampaignForm";
 
 export default function Home() {
   const basePath = useGetBasePath();
@@ -16,10 +16,7 @@ export default function Home() {
       <div>You are logged in with user id : 1</div>
       <div className="flex flex-col gap-8">
         <div className="text-4xl font-bold">Email marketing campaign form</div>
-        <div>
-          <div></div>
-        </div>
-        <EmailCampaignRichText />
+        <EmailCampaignForm/>
         <button className="hover:cursor-pointer " onClick={getData}>
           click
         </button>
