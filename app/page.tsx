@@ -1,10 +1,8 @@
 "use client";
 
-import { useGetBasePath } from "../hooks/useGetBasePath";
 import { EmailCampaignForm } from "@/components/emailCampaignForm/EmailCampaignForm";
 
 export default function Home() {
-  const basePath = useGetBasePath();
 
   return (
     <div className="flex-col flex  items-center justify-items-center min-h-screen p-8 pb-20 gap-5 sm:p-20 font-[family-name:var(--font-geist-sans)]">
