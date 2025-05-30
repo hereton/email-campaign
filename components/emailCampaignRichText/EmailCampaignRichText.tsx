@@ -20,6 +20,8 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { EmailCampaignRichTextProps } from "./emailCampaignRichText.props";
+import EmailCampaignRichTextToolbarPlugin from "./EmailCampaignRichTextToolbarPlugin";
+import emailCampaignTheme from "./emailCampaignTheme";
 
 const EditorCapturePlugin = forwardRef<LexicalEditor>(
   (props: any, ref: any) => {
@@ -43,16 +45,13 @@ export const EmailCampaignRichText = forwardRef<
   LexicalEditor,
   EmailCampaignRichTextProps
 >((props: EmailCampaignRichTextProps, ref) => {
-  const editor = createEditor();
-
   const PLACEHOLDER = "Example of using lexical as richtext";
-  const theme = {};
   const onError = (error: Error) => {
     console.error(error);
   };
   const initialConfig: InitialConfigType = {
     namespace: "emailCampaignRichText",
-    theme,
+    theme: emailCampaignTheme,
     onError,
     editorState: props.editorState || "",
   };
@@ -60,13 +59,14 @@ export const EmailCampaignRichText = forwardRef<
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <div className="relative">
+        <EmailCampaignRichTextToolbarPlugin />
         <RichTextPlugin
           contentEditable={
             <ContentEditable
               className="bg-white rounded-[8px] text-black min-h-[300px] h-auto px-[16px] pt-[8px] w-full "
               aria-placeholder={PLACEHOLDER}
               placeholder={
-                <div className="absolute top-[10px] left-[15px] text-amber-700">
+                <div className="absolute top-[44px] left-[15px] text-amber-700">
                   {PLACEHOLDER}
                 </div>
               }
