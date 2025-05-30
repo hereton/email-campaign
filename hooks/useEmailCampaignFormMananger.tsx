@@ -26,7 +26,11 @@ export const useEmailCampaignFormManager = () => {
     data.emailContent = JSON.stringify(
       emailCampaignRichTextRef?.current?.getEditorState()
     );
+    data.userId = "1";
     console.log(data);
+    alert(
+      `submit with UserId: ${data.userId} CampaignName: ${data.campaignName}, Subject: ${data.subject} emailContent: ${data.emailContent}`
+    );
   };
 
   const handleValidateEmptyRichText = (editorState?: EditorState) => {
@@ -58,6 +62,6 @@ export const useEmailCampaignFormManager = () => {
     emailCampaignRichTextRef,
     formState,
     handleValidateEmptyRichText,
-    clearErrors
+    clearErrors,
   };
 };

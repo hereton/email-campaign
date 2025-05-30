@@ -84,6 +84,7 @@ export default function EmailCampaignRichTextToolbarPlugin() {
   return (
     <div className="flex gap-5 p-1" ref={toolbarRef}>
       <button
+        type="button"
         onClick={() => {
           editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
         }}
@@ -95,6 +96,7 @@ export default function EmailCampaignRichTextToolbarPlugin() {
         bold
       </button>
       <button
+        type="button"
         onClick={() => {
           editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
         }}
@@ -107,6 +109,7 @@ export default function EmailCampaignRichTextToolbarPlugin() {
         italic
       </button>
       <button
+        type="button"
         onClick={() => {
           editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
         }}
@@ -119,6 +122,7 @@ export default function EmailCampaignRichTextToolbarPlugin() {
         underline
       </button>
       <button
+        type="button"
         onClick={() => {
           editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
         }}
