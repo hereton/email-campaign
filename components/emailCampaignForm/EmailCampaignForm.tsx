@@ -64,7 +64,11 @@ export const EmailCampaignForm = () => {
             <div className="text-red-500 py-1">This field is required</div>
           )}
         </div>
-        <button type="submit" onClick={resetEmailContentErrorBeforeSubmit}>
+        <button
+          className="cursor-pointer"
+          type="submit"
+          onClick={resetEmailContentErrorBeforeSubmit}
+        >
           submit
         </button>
       </div>
